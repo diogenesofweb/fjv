@@ -1,0 +1,30 @@
+{
+  "name": "Functional JSON viewer",
+  "version": "0.0.2",
+  "manifest_version": 3,
+  "description": "Easily explore JSON data with a nice UI",
+  "homepage_url": "https://github.com/diogenesofweb/fjv",
+  "minimum_chrome_version": "88",
+  "icons": {
+    "128": "img/128.png",
+    "48": "img/48.png",
+    "32": "img/32.png",
+    "16": "img/16.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["style.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "options_page": "options.html",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*/*", "<all_urls>"]
+}

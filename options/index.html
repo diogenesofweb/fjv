@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Options</title>
+    <style>
+      html {
+        color-scheme: light dark;
+        /* font-family: system-ui, sans-serif; */
+
+        --fg: hsl(0 0% 10%);
+        --bg: hsl(0 0% 80%);
+        color: var(--fg);
+        background: var(--bg);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html {
+          --fg: hsl(0 0% 90%);
+          --bg: hsl(0 0% 6%);
+        }
+      }
+      body {
+        font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+          Consolas, "DejaVu Sans Mono", monospace;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      details,
+      label,
+      button,
+      select,
+      input {
+        font-family: inherit;
+        font-size: inherit;
+        background: var(--bg);
+        color: inherit;
+      }
+
+      button {
+        padding: 1ch;
+        border: 1px solid currentColor;
+        cursor: pointer;
+      }
+
+      body {
+        display: grid;
+        gap: 1.5em;
+        padding: 1em;
+        max-width: 60ch;
+        margin-inline: auto;
+      }
+      label {
+        display: grid;
+        gap: 0.5em;
+      }
+      label:has(input[type="checkbox"]) {
+        display: flex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <label>
+      <div>Max length of JSON string to format</div>
+      <input type="number" id="json_str_max_length" min="1000" />
+    </label>
+
+    <label>
+      <div>Theme</div>
+      <select id="theme">
+        <option value="auto">Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+
+    <label>
+      <div>Sticky panel</div>
+      <select id="sticky_panel">
+        <option value="0">No</option>
+        <option value="1">Filter</option>
+        <option value="2">Node path</option>
+      </select>
+    </label>
+
+    <label>
+      <div>Clickable links</div>
+      <select id="clickable_link">
+        <option value="0">No</option>
+        <option value="1">String starts with "/" or "http()://"</option>
+        <option value="2">String starts with "http(s)://"</option>
+        <option value="3">String is a valid URL</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" id="escape_HTML" />
+      <span> Escape HTML </span>
+    </label>
+
+    <label>
+      <input type="checkbox" id="show_newline_chars" />
+      <span> Show newline chars `/n/r`</span>
+    </label>
+
+    <label>
+      <input type="checkbox" id="keymaps" />
+      <span>Enable keymaps</span>
+    </label>
+
+    <details>
+      <summary>Keymaps:</summary>
+
+      <p>h - move focus left (parent node)</p>
+      <p>j - move focus down (next sibling)</p>
+      <p>k - move focus up (previous sibling)</p>
+      <p>l - move focus right (child node)</p>
+
+      <p>c - collapse all child nodes</p>
+      <p>e - expand all child nodes</p>
+
+      <p>p - copy node path</p>
+      <p>y - copy nodes</p>
+    </details>
+
+    <div id="status"></div>
+    <button id="save">Save</button>
+
+    <script src="options.js"></script>
+  </body>
+</html>

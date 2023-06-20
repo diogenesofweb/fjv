@@ -1,0 +1,19 @@
+{
+  "name": "fjv",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "add:opts": "cp ./options/index.html ./dist/options.html && cp ./options/options.js ./dist/options.js",
+    "build": "tsc && vite build",
+    "prepub": "pnpm build && pnpm add:opts",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.237",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "json-in-details": "^0.11.0"
+  }
+}

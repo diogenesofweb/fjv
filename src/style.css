@@ -1,0 +1,158 @@
+@import "json-in-details/styles.css" layer(jid);
+
+html {
+  color-scheme: light;
+
+  color: var(--fg);
+  background: var(--bg);
+
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --p1: 0.5em;
+  --p2: 1em;
+
+  --clr: hsl(28, 91%, 34%);
+
+  --fg: hsl(0, 0%, 10%);
+  --line: hsl(0, 0%, 50%, 0.5);
+
+  --bg0: hsl(0, 0%, 100%);
+  --bg: hsl(0, 0%, 80%);
+  --bg2: hsl(0, 0%, 94%);
+
+  --bga1: hsl(0, 0%, 50%, 0.1);
+  --bga2: hsl(0, 0%, 100%, 1);
+  --bga3: hsl(0, 0%, 96%, 0.8);
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --clr: hsl(28, 91%, 64%);
+
+  --fg: hsl(0, 0%, 90%);
+  --line: hsl(0, 0%, 50%, 0.5);
+
+  --bg0: hsl(0, 0%, 8%);
+  --bg: hsl(0, 0%, 6%);
+  --bg2: hsl(0, 0%, 12%);
+  --bga1: hsl(0, 0%, 50%, 0.1);
+  --bga2: hsl(0, 0%, 12%, 1);
+  --bga3: hsl(0, 0%, 12%, 0.6);
+}
+
+body {
+  margin: 0;
+  min-height: 101vh;
+  padding: 1em;
+}
+
+#viewer {
+  position: relative;
+}
+
+input,
+button {
+  font-size: inherit;
+  color: inherit;
+  background: var(--bg2);
+}
+
+:is(input, button):focus-visible {
+  outline: 2px solid var(--line);
+}
+button:hover {
+  background: var(--bga2);
+}
+input:hover {
+  background: var(--bg0);
+}
+
+input,
+#path {
+  line-height: 1.5;
+
+  padding-block: var(--p1);
+  padding-inline: var(--p2);
+
+  border-radius: var(--p1);
+  border: 1px solid var(--line);
+}
+
+button {
+  cursor: pointer;
+
+  display: inline-flex;
+  place-items: center;
+  padding: var(--p1);
+
+  border: 1px solid var(--line);
+  border-radius: var(--p1);
+}
+
+button:is(:hover, :focus-visible) {
+  color: var(--clr);
+}
+
+#btns {
+  display: flex;
+  gap: var(--p1);
+}
+
+.sticky {
+  position: sticky;
+  z-index: 1;
+  top: 2px;
+}
+
+#path-panel,
+#filter-panel {
+  grid-template-columns: 1fr auto;
+  display: grid;
+  align-items: center;
+  gap: var(--p1);
+  margin-block: var(--p1);
+}
+
+#path-panel {
+  margin-bottom: var(--p2);
+}
+
+#path {
+  padding-inline: var(--p2);
+  color: var(--clr);
+
+  background: var(--bga3);
+  backdrop-filter: blur(0.25em);
+}
+
+#jid {
+  border-radius: var(--p1);
+  margin-bottom: 33vh;
+}
+
+/* TABS */
+#tabs {
+  padding-bottom: var(--p1);
+  display: inline-flex;
+  gap: var(--p1);
+}
+
+#tabs > button {
+  padding-inline: var(--p2);
+
+  border-radius: 0px;
+  border: none;
+  border-block: 3px solid transparent;
+}
+
+#tabs > button.active {
+  color: var(--clr);
+  border-bottom-color: var(--clr);
+}
