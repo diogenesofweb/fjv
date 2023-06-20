@@ -27,14 +27,14 @@
 
 ### Keymaps:
 
-h - move focus left (parent node)
-j - move focus down (next sibling)
-k - move focus up (previous sibling)
-l - move focus right (child node)
-c - collapse all child nodes
-e - expand all child nodes
-y - copy node
-p - copy node path
+- h - move focus left (parent node)
+- j - move focus down (next sibling)
+- k - move focus up (previous sibling)
+- l - move focus right (child node)
+- c - collapse all child nodes
+- e - expand all child nodes
+- y - copy node
+- p - copy node path
 
 ### Tips:
 
