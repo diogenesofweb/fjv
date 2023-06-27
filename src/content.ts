@@ -30,10 +30,11 @@ async function run() {
   // console.log(json_str);
 
   try {
-    const obj = JSON.parse(pre_text);
     pre.style.display = "none";
     // pre.remove();
-    await setup_viewer(obj, pre);
+
+    await setup_viewer(pre);
+
     setup_tabs(pre);
 
     if (import.meta.env.PROD) {
@@ -48,7 +49,8 @@ async function run() {
   } catch (error) {
     pre.style.display = "";
     console.error(error);
-    return "Failed to parse";
+    // @ts-ignore
+    return error?.message || "Failed to parse";
   }
 }
 // run().then((v) => console.log(v));

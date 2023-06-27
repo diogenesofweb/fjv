@@ -1,6 +1,6 @@
 {
   "name": "Functional JSON viewer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 3,
   "description": "Easily explore JSON data with a nice UI",
   "homepage_url": "https://github.com/diogenesofweb/fjv",

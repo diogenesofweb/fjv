@@ -39,7 +39,7 @@ let opts = {
   keymaps: true,
 };
 
-export async function setup_viewer(data: Object, pre: HTMLPreElement) {
+export async function setup_viewer(pre: HTMLPreElement) {
   // console.log({ opts });
   if (import.meta.env.PROD) {
     // @ts-ignore
@@ -48,8 +48,12 @@ export async function setup_viewer(data: Object, pre: HTMLPreElement) {
   }
 
   if (pre.textContent!.length > opts.json_str_max_length) {
-    return "Too long";
+    throw new Error(
+      `Too long: ${pre.textContent!.length} > ${opts.json_str_max_length}`
+    );
   }
+
+  const data = JSON.parse(pre.textContent!);
 
   const generated_json_nodes = generate_HTML(data, {
     // @ts-ignore
