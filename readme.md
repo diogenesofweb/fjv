@@ -1,8 +1,10 @@
 # Functional JSON viewer
 
-## Easily explore JSON data with a nice UI
+## Explore formatted JSON data with ease
 
 [Available in the Chrome Web Store](https://chrome.google.com/webstore/detail/functional-json-viewer/cokkmplppnaigoodkkjopoblfaelibab)
+| [Web App](https://json-viewer.delphic.top)
+
 
 ### Why to use:
 
