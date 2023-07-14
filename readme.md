@@ -5,7 +5,6 @@
 [Available in the Chrome Web Store](https://chrome.google.com/webstore/detail/functional-json-viewer/cokkmplppnaigoodkkjopoblfaelibab)
 | [Web App](https://json-viewer.delphic.top)
 
-
 ### Why to use:
 
 - Foldable & filterable & focusable nodes
@@ -29,10 +28,10 @@
 
 ### Keymaps:
 
-- h - move focus left (parent node)
-- j - move focus down (next sibling)
-- k - move focus up (previous sibling)
-- l - move focus right (child node)
+- h | ArrowLeft - move focus left (parent node)
+- j | ArrowDown - move focus down (next sibling)
+- k | ArrowUp - move focus up (previous sibling)
+- l | ArrowRight - move focus right (child node)
 - c - collapse all child nodes
 - e - expand all child nodes
 - y - copy node
