@@ -32,7 +32,9 @@ export function setup_tabs(pre: HTMLPreElement) {
 
   document.body.prepend(tabs);
 
-  const wrapper = document.querySelector<HTMLDivElement>(viewer_ids.viewer)!;
+  const wrapper = document.querySelector<HTMLDivElement>(
+    "#" + viewer_ids.viewer
+  )!;
 
   json.addEventListener("click", () => {
     // console.log("JSON");

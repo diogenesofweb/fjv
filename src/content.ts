@@ -1,14 +1,13 @@
 import { setup_viewer } from "./viewer";
 import "./style.css";
 import { setup_tabs } from "./tabs";
+import { setup_converting } from "./converting";
 
 async function run() {
-  // console.log(import.meta.env.PROD);
+  // const d1 = performance.now();
   if (import.meta.env.PROD) {
     const bodyChildren = document.body.children.length;
-    if (bodyChildren !== 1) {
-      return "No JSON page";
-    }
+    if (bodyChildren !== 1) return "No JSON page";
   }
 
   const pre = document.querySelector<HTMLPreElement>("body > pre");
@@ -33,9 +32,11 @@ async function run() {
     pre.style.display = "none";
     // pre.remove();
 
-    await setup_viewer(pre);
+    const result = await setup_viewer(pre);
 
     setup_tabs(pre);
+
+    setup_converting(pre_text, result.data, result.theme);
 
     if (import.meta.env.PROD) {
       const link = document.createElement("link");
@@ -44,6 +45,8 @@ async function run() {
       link.rel = "stylesheet";
       document.getElementsByTagName("head")[0].appendChild(link);
     }
+
+    // console.log({ done_in: performance.now() - d1 });
 
     return "OK";
   } catch (error) {

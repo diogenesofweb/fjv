@@ -13,6 +13,7 @@
 - Keymaps (Vim inspired)
 - Clickable links
 - Light/dark theme
+- Converting JSON
 
 ### Functionality:
 
@@ -25,6 +26,12 @@
 - Copy node path
 - Switch formatted/raw data
 - Sticky panels
+
+### Convert JSON to:
+
+- JSON schema
+- Typescript interfaces (.d.ts)
+- Golang structs (.go)
 
 ### Keymaps:
 
@@ -50,3 +57,5 @@ On large file, better search:
 ![screenshot light theme](/src/etc/dark-theme.png)
 
 ![screenshot dark theme](/src/etc/light-theme.png)
+
+![screenshot convert JSON](/src/etc/convert.png)

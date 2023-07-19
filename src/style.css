@@ -1,10 +1,62 @@
 @import "json-in-details/styles.css" layer(jid);
 
+html,
+.jid {
+  --_fg-string: hsl(211 99% 36%);
+  --_fg-number: darkgreen;
+  --_fg-bool: maroon;
+  --_fg-empty: purple;
+  --_bg-select: hsl(28 91% 92%);
+}
+
+html.dark,
+.jid.dark {
+  --_fg-string: lightblue;
+  --_fg-number: hsl(61 66% 44%);
+  --_fg-bool: lightpink;
+  --_fg-empty: orange;
+  --_bg-select: hsl(28 91% 18% / 0.4);
+}
+
 html {
   color-scheme: light;
 
+  --clr: hsl(28 91% 34%);
+
+  --fg: hsl(0 0% 10%);
+  --line: hsl(0 0% 50% / 0.5);
+
+  --bg0: hsl(0 0% 89%);
+  --bg1: hsl(0 0% 93%);
+  --bg2: hsl(0 0% 97%);
+  --bg3: hsl(0 0% 100%);
+
+  --bga3: hsl(28 91% 96% / 0.75);
+
+  --shadow: 1px 3px 24px -3px hsl(0 0% 33%);
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --clr: hsl(28 91% 64%);
+
+  --fg: hsl(0 0% 90%);
+  --line: hsl(0 0% 50% / 0.5);
+
+  --bg0: hsl(0 0% 6%);
+  --bg1: hsl(0 0% 9%);
+  --bg2: hsl(0 0% 12%);
+  --bg3: hsl(0 0% 15%);
+
+  --bga3: hsl(0 0% 12% / 0.6);
+
+  --shadow: 1px 3px 24px -3px hsl(0 0% 0%);
+}
+
+html {
   color: var(--fg);
-  background: var(--bg);
+  background: var(--bg0);
 
   font-family: system-ui, sans-serif;
   font-size: 16px;
@@ -13,38 +65,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  --p1: 0.5em;
-  --p2: 1em;
-
-  --clr: hsl(28, 91%, 34%);
-
-  --fg: hsl(0, 0%, 10%);
-  --line: hsl(0, 0%, 50%, 0.5);
-
-  --bg0: hsl(0, 0%, 100%);
-  --bg: hsl(0, 0%, 80%);
-  --bg2: hsl(0, 0%, 94%);
-
-  --bga1: hsl(0, 0%, 50%, 0.1);
-  --bga2: hsl(0, 0%, 100%, 1);
-  --bga3: hsl(0, 0%, 96%, 0.8);
-}
-
-html.dark {
-  color-scheme: dark;
-
-  --clr: hsl(28, 91%, 64%);
-
-  --fg: hsl(0, 0%, 90%);
-  --line: hsl(0, 0%, 50%, 0.5);
-
-  --bg0: hsl(0, 0%, 8%);
-  --bg: hsl(0, 0%, 6%);
-  --bg2: hsl(0, 0%, 12%);
-  --bga1: hsl(0, 0%, 50%, 0.1);
-  --bga2: hsl(0, 0%, 12%, 1);
-  --bga3: hsl(0, 0%, 12%, 0.6);
 }
 
 body {
@@ -57,43 +77,40 @@ body {
   position: relative;
 }
 
-input,
-button {
+:where(input, button) {
   font-size: inherit;
   color: inherit;
   background: var(--bg2);
 }
-
-:is(input, button):focus-visible {
+:where(input, button):focus-visible {
   outline: 2px solid var(--line);
 }
+
 button:hover {
-  background: var(--bga2);
+  background: var(--bg3);
+  border-color: currentColor;
 }
 input:hover {
-  background: var(--bg0);
+  background: var(--bg3);
 }
 
-input,
-#path {
+:where(input, #path) {
   line-height: 1.5;
 
-  padding-block: var(--p1);
-  padding-inline: var(--p2);
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
 
-  border-radius: var(--p1);
+:where(button, input, #path) {
+  border-radius: 0.5em;
   border: 1px solid var(--line);
 }
 
 button {
   cursor: pointer;
-
   display: inline-flex;
   place-items: center;
-  padding: var(--p1);
-
-  border: 1px solid var(--line);
-  border-radius: var(--p1);
+  padding: 0.5em;
 }
 
 button:is(:hover, :focus-visible) {
@@ -102,7 +119,7 @@ button:is(:hover, :focus-visible) {
 
 #btns {
   display: flex;
-  gap: var(--p1);
+  gap: 0.5em;
 }
 
 .sticky {
@@ -116,16 +133,16 @@ button:is(:hover, :focus-visible) {
   grid-template-columns: 1fr auto;
   display: grid;
   align-items: center;
-  gap: var(--p1);
-  margin-block: var(--p1);
+  gap: 0.5em;
+  margin-block: 0.5em;
 }
 
 #path-panel {
-  margin-bottom: var(--p2);
+  margin-bottom: 1em;
 }
 
 #path {
-  padding-inline: var(--p2);
+  padding-inline: 1em;
   color: var(--clr);
 
   background: var(--bga3);
@@ -133,19 +150,22 @@ button:is(:hover, :focus-visible) {
 }
 
 #jid {
-  border-radius: var(--p1);
   margin-bottom: 33vh;
+  background: var(--bg2);
+}
+.jid {
+  border-radius: 0.5em;
 }
 
 /* TABS */
 #tabs {
-  padding-bottom: var(--p1);
-  display: inline-flex;
-  gap: var(--p1);
+  padding-bottom: 0.5em;
+  display: flex;
+  gap: 0.5em;
 }
 
 #tabs > button {
-  padding-inline: var(--p2);
+  padding-inline: 1em;
 
   border-radius: 0px;
   border: none;
@@ -155,4 +175,88 @@ button:is(:hover, :focus-visible) {
 #tabs > button.active {
   color: var(--clr);
   border-bottom-color: var(--clr);
+}
+
+/* CONVERT */
+
+button#convert {
+  margin-left: auto;
+  /* outline: 1px solid red; */
+}
+
+#convert-btns {
+  display: grid;
+  gap: 1em;
+}
+
+dialog {
+  /* outline: 1px solid red; */
+  padding: 0;
+  margin-top: 1em;
+  margin-right: 0;
+
+  border-radius: 1em 0 0 1em;
+  border: 1px solid var(--line);
+
+  color: var(--fg);
+  box-shadow: var(--shadow);
+}
+
+dialog::backdrop {
+  /* background-color: black; */
+  /* opacity: 0.66; */
+  background: transparent;
+}
+
+dialog:focus-visible {
+  outline: 1px solid var(--clr);
+}
+
+dialog > :where(div) {
+  padding: 1em;
+  min-width: min(80vw, 80ch);
+  background: var(--bg1);
+  /* background: var(--bg2); */
+}
+
+button.copy-all {
+  margin-bottom: 1em;
+  width: 100%;
+  justify-content: center;
+  font-size: 1.15em;
+}
+
+.code-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1em;
+
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+.code-block:is(:hover, :focus-within) {
+  background: var(--bg3);
+}
+
+pre {
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+  line-height: 1.5;
+
+  padding-block: 0;
+  padding-inline: 0.5em;
+
+  margin: 0;
+  tab-size: 2;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+pre span {
+  color: var(--_fg-string);
+}
+pre b {
+  color: var(--_fg-bool);
+  font-weight: normal;
 }

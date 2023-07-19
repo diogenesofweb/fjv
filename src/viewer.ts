@@ -30,8 +30,9 @@ const i = {
 export { i as viewer_ids };
 
 let opts = {
+  // theme: "light", // 'light' | 'dark'
   theme: "auto", // 'light' | 'dark'
-  json_str_max_length: 5000000,
+  json_str_max_length: 1000000,
   sticky_panel: 2,
   clickable_link: 1,
   show_newline_chars: false,
@@ -202,6 +203,8 @@ export async function setup_viewer(pre: HTMLPreElement) {
       handle_keymaps(ev);
     });
   }
+
+  return { data, theme };
 }
 
 function btn(id: string) {
