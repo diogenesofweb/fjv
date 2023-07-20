@@ -202,6 +202,22 @@ dialog {
   box-shadow: var(--shadow);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open].animate {
+    animation: anim 250ms ease;
+  }
+
+  @keyframes anim {
+    from {
+      transform: translatex(min(80vw, 80ch));
+      /* opacity: 0; */
+    }
+    /* to { */
+    /*   opacity: 1; */
+    /* } */
+  }
+}
+
 dialog::backdrop {
   /* background-color: black; */
   /* opacity: 0.66; */

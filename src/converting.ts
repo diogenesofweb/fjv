@@ -100,6 +100,7 @@ export function setup_converting(
   });
 
   const convert_dialog = document.createElement("dialog");
+  convert_dialog.classList.add("animate");
   const dialogs = [convert_dialog, ts_dialog, schema_dialog, go_dialog];
   dialogs.forEach((el) => {
     el.addEventListener("click", function (ev) {
