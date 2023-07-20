@@ -1,5 +1,5 @@
-import { setup_viewer } from "./viewer";
 import "./style.css";
+import { setup_viewer } from "./viewer";
 import { setup_tabs } from "./tabs";
 import { setup_converting } from "./converting";
 
