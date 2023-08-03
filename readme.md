@@ -9,11 +9,12 @@
 
 - Foldable & filterable & focusable nodes
 - (Shift-)Tab navigation
-- Show node path on focus/hover
+- Show node path on focus & hover
 - Keymaps (Vim inspired)
 - Clickable links
-- Light/dark theme
+- Light & dark theme
 - Converting JSON
+- Screenshot (JSON to image .jpeg)
 
 ### Functionality:
 
@@ -24,7 +25,7 @@
 - Copy JSON
 - Copy node
 - Copy node path
-- Switch formatted/raw data
+- Switch formatted & raw data
 - Sticky panels
 
 ### Convert JSON to:

@@ -2,6 +2,7 @@ import "./style.css";
 import { setup_viewer } from "./viewer";
 import { setup_tabs } from "./tabs";
 import { setup_converting } from "./converting";
+import { setup_srceenshot } from "./screenshot";
 
 async function run() {
   // const d1 = performance.now();
@@ -37,6 +38,8 @@ async function run() {
     setup_tabs(pre);
 
     setup_converting(pre_text, result.data, result.theme);
+
+    setup_srceenshot();
 
     if (import.meta.env.PROD) {
       const link = document.createElement("link");

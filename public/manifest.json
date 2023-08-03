@@ -1,8 +1,8 @@
 {
   "name": "Functional JSON viewer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "manifest_version": 3,
-  "description": "Explore formatted JSON data with ease.",
+  "description": "Elegant JSON formatter and explorer.",
   "homepage_url": "https://github.com/diogenesofweb/fjv",
   "minimum_chrome_version": "88",
   "icons": {

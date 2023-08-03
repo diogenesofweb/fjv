@@ -10,12 +10,13 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.241",
-    "terser": "^5.19.1",
+    "terser": "^5.19.2",
     "typescript": "^5.1.6",
-    "vite": "^4.4.4"
+    "vite": "^4.4.8"
   },
   "dependencies": {
     "genson-js": "^0.0.8",
+    "html-to-image": "^1.11.11",
     "json-in-details": "^0.12.0",
     "json-to-ts": "^1.7.0"
   }
