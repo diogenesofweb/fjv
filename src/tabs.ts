@@ -22,13 +22,14 @@ export function setup_tabs(pre: HTMLPreElement) {
   raw.setAttribute("id", i.raw);
   raw.textContent = "Raw Data";
 
-  const opts = document.createElement("button");
-  opts.setAttribute("id", i.opts);
-  opts.textContent = "Settings";
+  // const opts = document.createElement("button");
+  // opts.setAttribute("id", i.opts);
+  // opts.textContent = "Settings";
 
   const tabs = document.createElement("div");
   tabs.setAttribute("id", i.tabs);
-  tabs.append(json, raw, opts);
+  // tabs.append(json, raw, opts);
+  tabs.append(json, raw);
 
   document.body.prepend(tabs);
 
@@ -54,12 +55,12 @@ export function setup_tabs(pre: HTMLPreElement) {
     wrapper.style.display = "none";
   });
 
-  opts.addEventListener("click", () => {
-    // console.log("opts");
-    if (chrome.runtime.openOptionsPage) {
-      chrome.runtime.openOptionsPage();
-    } else {
-      window.open(chrome.runtime.getURL("options.html"));
-    }
-  });
+  // opts.addEventListener("click", () => {
+  //   // console.log("opts");
+  //   if (chrome.runtime.openOptionsPage) {
+  //     chrome.runtime.openOptionsPage();
+  //   } else {
+  //     window.open(chrome.runtime.getURL("options.html"));
+  //   }
+  // });
 }
