@@ -3,6 +3,7 @@ import jsonToGo from "./json-to-go";
 import json_to_ts from "json-to-ts";
 import { createSchema } from "genson-js";
 import { generate_HTML } from "json-in-details";
+import { copy2clipboard } from "./viewer";
 
 const b_copy_all = "Copy all";
 
@@ -85,7 +86,7 @@ export function setup_converting(
       b.classList.add("copy-all");
       b.textContent = b_copy_all;
       b.addEventListener("click", () =>
-        copy2clipboard(b, JSON.stringify(schema, null, 2))
+        copy_text(b, JSON.stringify(schema, null, 2))
       );
       container.prepend(b);
 
@@ -205,7 +206,7 @@ function make_code_container(code_text: string, code_formatted: string[]) {
   const b = document.createElement("button");
   b.classList.add("copy-all");
   b.textContent = b_copy_all;
-  b.addEventListener("click", () => copy2clipboard(b, code_text));
+  b.addEventListener("click", () => copy_text(b, code_text));
 
   const container = document.createElement("div");
   container.append(b);
@@ -228,9 +229,14 @@ function make_code_container(code_text: string, code_formatted: string[]) {
   return container;
 }
 
-async function copy2clipboard(elem: HTMLButtonElement, text: string) {
+async function copy_text(elem: HTMLButtonElement, text: string) {
   try {
-    await navigator.clipboard.writeText(text);
+    const container = elem.closest("dialog");
+    // console.log(container);
+    if (!container) return console.warn("no dialog");
+
+    // await navigator.clipboard.writeText(text);
+    await copy2clipboard(text, container);
     elem.textContent = "Copied !";
     setTimeout(() => (elem.textContent = b_copy_all), 1000);
   } catch (err) {
@@ -238,22 +244,24 @@ async function copy2clipboard(elem: HTMLButtonElement, text: string) {
   }
 }
 
-function copy_code_block(ev: MouseEvent) {
+async function copy_code_block(ev: MouseEvent) {
   const elem = ev.currentTarget;
   const ok = elem instanceof HTMLElement;
-  if (!ok) return;
+  if (!ok) return console.warn("no btn");
 
   const text = elem.previousElementSibling?.textContent;
   if (!text) return console.warn("where is my text?");
-  // console.log(text);
 
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      elem.innerHTML = check;
-      setTimeout(() => (elem.innerHTML = content_copy), 1000);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  const container = elem.closest("dialog");
+  // console.log(container);
+  if (!container) return console.warn("no dialog");
+  // navigator.clipboard.writeText(text)
+  try {
+    // console.log({ text });
+    await copy2clipboard(text, container);
+    elem.innerHTML = check;
+    setTimeout(() => (elem.innerHTML = content_copy), 1000);
+  } catch (error) {
+    console.error(error);
+  }
 }

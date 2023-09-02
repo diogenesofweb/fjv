@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.241",
-    "terser": "^5.19.2",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.8"
+    "@types/chrome": "^0.0.244",
+    "terser": "^5.19.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
   },
   "dependencies": {
     "genson-js": "^0.0.8",

@@ -211,15 +211,30 @@ function btn(id: string) {
   return document.querySelector<HTMLButtonElement>(`#${id}`)!;
 }
 
-function copy2clipboard(text: string) {
-  return (
-    navigator.clipboard
-      .writeText(text)
-      // .then(() => console.log("copied !"))
-      .catch((err) => {
-        console.error(err);
-      })
-  );
+// https://stackoverflow.com/questions/71321983/copy-to-clipboard-in-chrome-extension-v3
+export async function copy2clipboard(text: string, container = document.body) {
+  // container needed for select() to work when <dialog> is open
+  //
+  // if (navigator.clipboard && window.isSecureContext) {
+  //   await navigator.clipboard.writeText(text);
+  // } else {
+  // console.log(container);
+  const el = document.createElement("textarea");
+  el.value = text;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  container.appendChild(el);
+  el.select();
+
+  try {
+    document.execCommand("copy");
+  } catch (error) {
+    console.error(error);
+  } finally {
+    el.remove();
+  }
+  // }
 }
 
 function get_theme(val: string) {

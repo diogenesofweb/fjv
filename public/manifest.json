@@ -1,8 +1,8 @@
 {
   "name": "Functional JSON viewer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "manifest_version": 3,
-  "description": "Elegant JSON formatter and explorer.",
+  "description": "Modern JSON formatter and explorer.",
   "homepage_url": "https://github.com/diogenesofweb/fjv",
   "minimum_chrome_version": "88",
   "icons": {
@@ -25,6 +25,6 @@
     }
   ],
   "options_page": "options.html",
-  "permissions": ["storage"],
+  "permissions": ["storage", "contextMenus", "clipboardWrite"],
   "host_permissions": ["*://*/*", "<all_urls>"]
 }
