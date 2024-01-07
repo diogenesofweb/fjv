@@ -50,7 +50,7 @@ export async function setup_viewer(pre: HTMLPreElement) {
 
   if (pre.textContent!.length > opts.json_str_max_length) {
     throw new Error(
-      `Too long: ${pre.textContent!.length} > ${opts.json_str_max_length}`
+      `Too long: ${pre.textContent!.length} > ${opts.json_str_max_length}`,
     );
   }
 
@@ -170,6 +170,13 @@ export async function setup_viewer(pre: HTMLPreElement) {
     path = get_path(ev);
     // console.log(path);
     el_path.textContent = path;
+  });
+
+  jid.addEventListener("click", (ev) => {
+    const elem = ev.target as HTMLElement;
+    if (elem && elem.className === "jid--dtl") {
+      elem.querySelector("summary")?.focus();
+    }
   });
 
   if (opts.keymaps) {

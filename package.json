@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.244",
-    "terser": "^5.19.3",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "@types/chrome": "^0.0.256",
+    "terser": "^5.26.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
   },
   "dependencies": {
     "genson-js": "^0.0.8",
     "html-to-image": "^1.11.11",
-    "json-in-details": "^0.12.0",
+    "json-in-details": "^0.13.0",
     "json-to-ts": "^1.7.0"
   }
 }
