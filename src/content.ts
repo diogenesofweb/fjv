@@ -7,8 +7,16 @@ import { setup_srceenshot } from "./screenshot";
 async function run() {
   // const d1 = performance.now();
   if (import.meta.env.PROD) {
+    let elems = 1
+    const native_formatter = document.querySelector<HTMLPreElement>(
+      "body > div.json-formatter-container",
+    );
+    if (native_formatter) {
+      elems++
+      native_formatter.style.display = "none";
+    }
     const bodyChildren = document.body.children.length;
-    if (bodyChildren !== 1) return "No JSON page";
+    if (bodyChildren !== elems) return "No JSON page";
   }
 
   const pre = document.querySelector<HTMLPreElement>("body > pre");

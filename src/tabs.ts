@@ -13,6 +13,10 @@ export function setup_tabs(pre: HTMLPreElement) {
     active: "active",
   };
 
+  const native_formatter = document.querySelector<HTMLPreElement>(
+    "body > div.json-formatter-container",
+  );
+
   const json = document.createElement("button");
   json.setAttribute("id", i.json);
   json.textContent = "JSON";
@@ -34,7 +38,7 @@ export function setup_tabs(pre: HTMLPreElement) {
   document.body.prepend(tabs);
 
   const wrapper = document.querySelector<HTMLDivElement>(
-    "#" + viewer_ids.viewer
+    "#" + viewer_ids.viewer,
   )!;
 
   json.addEventListener("click", () => {
@@ -42,8 +46,9 @@ export function setup_tabs(pre: HTMLPreElement) {
     json.classList.add(c.active);
     raw.classList.remove(c.active);
 
-    pre.style.display = "none";
     wrapper.style.display = "";
+    pre.style.display = "none";
+    native_formatter && (native_formatter.style.display = "none");
   });
 
   raw.addEventListener("click", () => {
@@ -51,8 +56,9 @@ export function setup_tabs(pre: HTMLPreElement) {
     raw.classList.add(c.active);
     json.classList.remove(c.active);
 
-    pre.style.display = "";
     wrapper.style.display = "none";
+    pre.style.display = "";
+    native_formatter && (native_formatter.style.display = "");
   });
 
   // opts.addEventListener("click", () => {
