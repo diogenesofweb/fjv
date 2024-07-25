@@ -11,6 +11,7 @@ const saveOptions = () => {
   const escape_HTML = document.getElementById("escape_HTML").checked;
   const show_newline_chars =
     document.getElementById("show_newline_chars").checked;
+  const is_regex = document.getElementById("is_regex").checked;
 
   const opts = {
     json_str_max_length,
@@ -20,6 +21,7 @@ const saveOptions = () => {
     keymaps,
     sticky_panel,
     theme,
+    is_regex,
   };
   // console.log(opts);
   chrome.storage.local.set(opts, () => {
@@ -44,6 +46,7 @@ const restoreOptions = () => {
       show_newline_chars: false,
       escape_HTML: true,
       keymaps: true,
+      is_regex: false,
     },
     (items) => {
       // console.log(items);
@@ -58,7 +61,8 @@ const restoreOptions = () => {
       document.getElementById("escape_HTML").checked = items.escape_HTML;
       document.getElementById("show_newline_chars").checked =
         items.show_newline_chars;
-    }
+      document.getElementById("is_regex").checked = items.is_regex;
+    },
   );
 };
 

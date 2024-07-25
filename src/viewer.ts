@@ -38,6 +38,7 @@ let opts = {
   show_newline_chars: false,
   escape_HTML: true,
   keymaps: true,
+  is_regex: false,
 };
 
 export async function setup_viewer(pre: HTMLPreElement) {
@@ -72,7 +73,7 @@ export async function setup_viewer(pre: HTMLPreElement) {
 
   viewer.innerHTML = `
 <div id="filter-panel" class="${opts.sticky_panel == 1 ? "sticky" : ""}">
-  <input type="text" id="${i.filter}" placeholder="Filter :" />
+  <input type="text" id="${i.filter}" placeholder="Filter ${opts.is_regex ? ": RegExp" : ":"} " />
 
   <div id="btns">
     <button id="${i.collapse}" title="Collapse">
@@ -159,7 +160,7 @@ export async function setup_viewer(pre: HTMLPreElement) {
       // @ts-ignore
       const v = ev.target.value;
       // console.log(v);
-      filter(v);
+      filter(v, opts.is_regex);
     });
 
   const el_path = document.querySelector<HTMLSpanElement>(`#${i.path}`)!;

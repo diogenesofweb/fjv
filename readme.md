@@ -18,7 +18,7 @@
 
 ### Functionality:
 
-- Filter nodes
+- Filter nodes (text or RegExp)
 - Collapse all nodes
 - Expand all nodes
 - Save JSON
